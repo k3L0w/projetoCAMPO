@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--standard mode: segue especificações do HTML e CSS da melhor maneira possível-->
-<html lang="pt-br">
+<html lang="pt-BR">
 <!--definição do idioma padrão das home pages-->
 
 <head>
@@ -13,7 +13,6 @@
     <!--compatibilidade com diversos devices-->
     <link rel="stylesheet" href="estilos.css">
     <title>Schedule - Soluções em Hidráulia</title> <!-- titulo da home-->
-
     <link rel="apple-touch-icon" sizes="180x180" href="imagens/apple-touch-icon.png">
     <!--Link de icones de dispositivos-->
     <link rel="icon" type="image/png" sizes="32x32" href="imagens/favicon-32x32.png">
@@ -27,24 +26,65 @@
     <!--estrutura do documento-->
     <div class="container">
         <!--encapsulamento de toda a home page-->
+
+        <div class="burguer">
+            <!--menu lateral direiro-->
+            <!--criação do menu esquerdo do tipo hamburguers-->
+            <div class="line" id="line1"></div>
+            <div class="line" id="line2"></div>
+            <div class="line" id="line3"></div>
+            <span>fechar</span>
+        </div>
+
         <header>
             <!--cabeçalho-->
             <div class="img-wrapper">
                 <!--embrulho da imagem para formatação com estilos-->
                 <img src="imagens/background.jpg" alt="">
-                <div class="banner"> <!--envelopar (h1, p, e buttom) permite formatar todos os elementos-->
-                    <h1>Schedule</h1> <!--home principal-->
-                    <p>Soluções em Hidráulica</p> <!--subtítulo da home principal-->
-                    <button>Orçamento</button> <!--Link para home de orçamento-->
+                <div class="banner">
+                    <!--envelopar (h1, p, e buttom) permite formatar todos os elementos-->
+                    <h1>Schedule</h1>
+                    <!--home principal-->
+                    <p>Soluções em Hidráulica</p>
+                    <!--subtítulo da home principal-->
+                    <button>Fale conosco</button>
+                    <!--Link para um 'fale conosco'-->
                 </div>
 
             </div>
 
         </header>
 
+        <div class="sidebar">
+            <!--construção do menu lateral direita-->
+            <nav>
+                <!--elementos NAV para representar itens de navegação-->
+                <ul class="menu">
+                    <li class="menu-item"><a href="#" class="menu-link">Home</a></li>
+                    <!--item de menu 'home'-->
+                    <li class="menu-item"><a href="#" class="menu-link">Nossa empresa</a></li>
+                    <!--item de menu 'empresa'-->
+                    <li class="menu-item"><a href="#" class="menu-link">Trabalhe conosco</a></li>
+                    <!--item de menu 'formulario - trabalhe conosco'-->
+                    <li class="menu-item"><a href="#" class="menu-link">Orçamento</a></li>
+                    <!--item de menu 'orçamento'-->
+                </ul>
+            </nav>
+            <!--icones das redes sociais-->
+            <div class="social-media">
+                <!--fontes como ícones utilizando a biblioca do font site: https://fontawesome.com/-->
+                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <a href="#"><i class="fab fa-instagram-square"></i></a>
+                <a href="#"><i class="fab fa-twitter-square"></i>
+                </a>
+            </div>
+        </div>
+
     </div>
 
 </body>
+<script src="script.js"></script>
+<!--load do scrip JS-->
 
 </html>
 <!--the end!-->

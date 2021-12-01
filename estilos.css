@@ -1,31 +1,106 @@
 /*font google Import*/
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500&family=Baloo+Da+2:wght@400;500;600&family=Josefin+Sans:ital@0;1&family=Josefin+Slab:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500&family=Baloo+Da+2:wght@400;500;600&family=Josefin+Sans:ital@0;1&family=Josefin+Slab:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap");
 
 /*CDN servers*/
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css');
 
 
-*{/*Zerar todas margens (caso seja necessário será aplicado margem individualmente*/
+* {/*Zerar todas margens (caso seja necessário será aplicado margem individualmente*/
     margin: 0;
     padding: 0; /*margem interna*/
     overflow: hidden; /*remove barras de rolagem*/
-    position: relative; /*necessário adicionar 'position: relative' por conta do 'filho' (.banner) ser absolute*/
+    /*position: relative; /*necessário adicionar 'position: relative' por conta do 'filho' (.banner) ser absolute*/
+    list-style: none; /*retira os 'bullets' dos listes item*/
+    text-decoration: none; /*retira o sublinhado do link*/
+}
+
+:root {
+    --font-primary: "Baloo Da 2", serif;
+    --font-secundary: "Josefin Sans", serif;
+    --font-action: "Mulish", serif; /*font utilizada nos links e botoes*/
 }
 
 body{
     font-size: 16px; /*tamanho de fonte padrão*/
 }
 
+.burguer{
+    /*background-color: red; /*cor de background, desabilitar essa funcionalidade posteriormente*/
+    width: 2rem; /*largura do menu*/
+    height: 2rem; /*altura do menu*/
+    position: fixed; /*posição fixa na home independentemente da rolagem da tela*/
+    z-index: 100;/*posição do elemento, parâmetros: x, y, z (horizontal, vertical, profundidade do layer)*/
+    right: 2rem; /*posição em relação a margem direita*/ 
+    top: 2rem; /*posição em relação a margem do topo*/
+    display: flex;
+    flex-direction: column; /*os itens do menu burguer ficarão 'um embaixo do outro'*/
+    justify-content: space-evenly; /*espalha os elementos de acordo com o flex-direction definido*/
+    cursor: pointer;
+}
+
+.show-menu .burguer{
+    right: 16rem; /*ocultar menu hamburguer*/
+}
+
+.line{
+    width: 100%; /*largura do objeto, mesmo tamanho da classe pai (burguer)*/
+    height: 0.1rem; /*altura do objeto*/
+    background-color: white;
+    box-shadow: 0.1rem 0.1rem 1px #000;
+    transition: transform 1s;
+}
+
+.show-menu #line1{ /* 'gira' a linha 1 em 45graus */
+    transform: rotate(45deg) translate(.3rem, .3rem); /*faz com a linha desça, posição x e y*/
+}
+
+.show-menu #line2{ /*oculta a linha 2*/
+    opacity: 0;
+    visibility: hidden;
+}
+
+.show-menu #line3{/* 'gira' a linha 3 em -45graus */
+    transform: rotate(-45deg) translate(.3rem, -.45rem); /*faz com a linha desça*/
+}
+
+.burguer span{
+    position: absolute; /*posição do mene, nesse caso, absoluta*/
+    left: 3rem; /*apartir da direita, 3rem*/
+    height: 1rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; /*alinhamento horizontal*/
+    background-color: #a044ff;
+    color: #ffffff;
+    font-family: var(--font-action);
+    opacity: 0;
+}
+
+.burguer span::before{/*triangulo do botão*/
+    content: ''; /*elemento sem conteúdo*/
+    position: absolute;
+    border-right: .5rem solid #a044ff;
+    border-top: .5rem solid #a044ff;
+    border-left: .5rem solid #a044ff;
+    border-bottom: .5rem solid #a044ff;
+    left: -.1rem;
+}
+
+.show-menu .burguer:span
+
 header{/*definição de largura e altura do header em relação ao conteiner ("pai")*/
     width: 100%; /*100% de largura da tela inteira*/
     height: 100vh; /*vh (altura da view) altura de visualização de acordo com a tela do dispositivo*/
+    overflow: hidden;
+    position: relative;
 }
 
 .img-wrapper{/*referenciar a uma classe*/
     width: 100%; /*100% de largura do header do conteiner*/
     height: 100%; /*100% de altura do header do conteiner*/
     overflow: hidden; /*remove barras de rolagem*/
-    background-color: rgba(255,0,0,0.0); /*função RGBa (o "a" refere-se a transparencia)*/
+    background-color: rgba(43, 11, 11, 0); /*função RGBa (o "a" refere-se a transparencia)*/
     /*background-color: rgb(1, 50, 1); função RGB (RED GREEN BLUE)*/
     /*background-color: #000; (cor em rgb)*/
 }
@@ -60,7 +135,8 @@ header{/*definição de largura e altura do header em relação ao conteiner ("p
 .banner h1{/*formata só o h1 que está dentro do banner*/
     color: #8B0000; /*Cor: DarkRed em Hexadecimal*/
     font-size: 4rem; /*Acessibilidade. Essa fonte terá o mesmo tamanho de fonte do 'Pai' 16px por padrão, ou seja do elemento banner*/
-    font-family: "Baloo Da 2", serif; /*fonte importada do google fonts, serif será utilizada caso google fonts fique off.*/
+    /*font-family: "Baloo Da 2", serif; /*fonte importada do google fonts, serif será utilizada caso google fonts fique off.*/
+    font-family: var(--font-primary);
     font-weight: 200; /*Espessura da fonte*/
     text-shadow: .2rem .1rem 1px rgba(1, 0, 0, .4); /*sombra de texto*/
     line-height: 3.5rem; /*altura da linha do h1*/
@@ -70,16 +146,18 @@ header{/*definição de largura e altura do header em relação ao conteiner ("p
 }
 
 .banner p{
-    font-family:Josefin Sans, serif; /*fonte importada do google fonts, serif será utilizada caso google fonts fique off.*/
+    /*font-family:Josefin Sans, serif; /*fonte importada do google fonts, serif será utilizada caso google fonts fique off.*/
+    font-family: var(--font-secundary);
     font-size: 2rem;
-    text-shadow: .1rem .1rem 1px rgba(1, 0, 0, .4); /*sombra de texto*/
+    /*text-shadow: .1rem .1rem 1px rgba(1, 0, 0, .4); /*sombra de texto*/
     margin-bottom: 1rem; /*margem inferior*/
     opacity: 0; /*inicia sem o elemento na tela, com opacidade: 0*/
     animation: moveBanner 3s forwards; /*animação do p de 3segundos*/
 }
 
 .banner button{
-    font-family: "Muli", serif;  /*fonte importada do google fonts, serif será utilizada caso google fonts fique off.*/
+    /*font-family: "Mulish", serif;  /*fonte importada do google fonts, serif será utilizada caso google fonts fique off.*/
+    font-family: var(--font-action);
     font-size: 1.5rem; /*tamanho da fonte do texto do botão*/
     color: #F5F5F5; /*cor da fonte do botão*/
     text-transform: uppercase; /*Texto do botão em maísculas*/
@@ -94,14 +172,14 @@ header{/*definição de largura e altura do header em relação ao conteiner ("p
     padding-right: 2rem; /*margem interna direita*/
     padding-bottom: 1rem; /*margem interna inferior*/
     border: none; /*botão sem borda, ficando um botão flet*/
-    border-radius: 5px; /*borda arredondada, em px para que não mude*/
+    border-radius: 7px; /*borda arredondada, em px para que não mude*/
     cursor: pointer; /*mouse muda de seta para 'mão' sinalizando uma ação*/
-    opacity: 0; /*inicia sem o elemento na tela, com opacidade: 0*/
+    /*opacity: 0; /*inicia sem o elemento na tela, com opacidade: 0*/
     animation: moveBanner 4s forwards; /*animação do button de 4segundos*/
 }
 
 .banner button:hover{ /*classe que identifica uma ação ou evento na página*/
-    opacity: 0.8; /*altera a opacidade ao passar com o mouse*/
+    opacity: 5; /*altera a opacidade ao passar com o mouse*/
 }
 
 /*animação do h1*/
@@ -115,4 +193,72 @@ header{/*definição de largura e altura do header em relação ao conteiner ("p
         /*transform: rotateY(0); /*retorna a sua posição original*/
         opacity: 1; /*retorna a opacidade a sua posição original*/
     }
+}
+
+.sidebar{
+    width: 20rem; /*largura do objeto*/
+    height: 100vh; /*altura exata da tela, 100vh, mesma altura da tela ou view*/
+    background-color: #fff;
+    position: fixed; /*posição fixa na view (tela)*/
+    top: 0; /*posição do elemento na tela em relação a borda do topo*/
+    right: -20rem; /*posição do elemento na tela em relação a borda da direita*/
+    /*-20 joga o sidebar para fora da tela.*/
+    transition: all 1s;
+    z-index: 80;
+}
+
+.show-menu .sidebar{ 
+    /*se o elemento sidebar tiver também a classe show-menu 
+    * a posição dele, apartir da direita, será 0, inicialmente a posição será -20.
+    */
+    right: 0;
+}
+
+.menu {
+    position: absolute;
+    top: 40%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu-item{
+    text-align: right; /*alinhamento do objeto*/
+    margin-bottom: 0.5rem; /*Tamanho do objeto*/
+}
+
+.menu-link{
+    font-family: var(--font-action); /*var é uma variável, --font-action*/
+    font-size: 1.4rem;
+    color: #555;
+    transition: color 1s;
+}
+
+.menu-link:hover{
+    color: rgb(0, 0, 0);
+}
+
+.social-media{
+    /*background-color: rgba(255, 0, 0, .5);*/
+    position: absolute; /*posição absoluta*/
+    bottom: 2rem; /*posição apartir do bottom*/
+    width: 100%; /*largura do objeto*/
+    display: flex; /*distribuição do ícones pela linha*/
+    justify-content: space-evenly; /*quantidade de espaços entre eles*/
+}
+
+.social-media i{ /*dentro do social-media, todos os elementos que tiverem o i*/
+    background-color: #6a3093;
+    color: rgba(255, 255, 255, 1); /*definição de cor do objeto*/
+    height: 2.5rem; /*altura do objeto*/
+    width: 2.5rem; /*largura do objeto*/
+    font-size: 1.5rem; /*font do objeto*/
+    display: flex;/*distribuição dos ícones pela linha*/
+    justify-content: center; /*alinhado em relação ao eixo 'x'*/
+    align-items: center; /*alinhado em relação ao eixo y*/
+    border-radius: 50%; /*bordas arredondadas*/
+    transition: background-color 1s;
+}
+
+.social-media i:hover{
+    background-color: #14091f;
 }
